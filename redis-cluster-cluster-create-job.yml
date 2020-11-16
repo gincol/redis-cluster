@@ -1,113 +1,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  annotations:
-    helm.sh/hook: post-install,post-upgrade
-  creationTimestamp: "2020-11-16T12:30:29Z"
   labels:
-    app.kubernetes.io/instance: my-release
-    app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis-cluster
-    helm.sh/chart: redis-cluster-3.3.1
-  managedFields:
-  - apiVersion: batch/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:helm.sh/hook: {}
-        f:labels:
-          .: {}
-          f:app.kubernetes.io/instance: {}
-          f:app.kubernetes.io/managed-by: {}
-          f:app.kubernetes.io/name: {}
-          f:helm.sh/chart: {}
-      f:spec:
-        f:activeDeadlineSeconds: {}
-        f:backoffLimit: {}
-        f:completions: {}
-        f:parallelism: {}
-        f:template:
-          f:metadata:
-            f:labels:
-              .: {}
-              f:app.kubernetes.io/instance: {}
-              f:app.kubernetes.io/managed-by: {}
-              f:app.kubernetes.io/name: {}
-              f:helm.sh/chart: {}
-          f:spec:
-            f:containers:
-              k:{"name":"trigger"}:
-                .: {}
-                f:args: {}
-                f:command: {}
-                f:env:
-                  .: {}
-                  k:{"name":"REDIS_CLUSTER_CREATOR"}:
-                    .: {}
-                    f:name: {}
-                    f:value: {}
-                  k:{"name":"REDIS_CLUSTER_REPLICAS"}:
-                    .: {}
-                    f:name: {}
-                    f:value: {}
-                  k:{"name":"REDIS_NODES"}:
-                    .: {}
-                    f:name: {}
-                    f:value: {}
-                  k:{"name":"REDIS_PORT"}:
-                    .: {}
-                    f:name: {}
-                    f:value: {}
-                  k:{"name":"REDIS_TLS_ENABLED"}:
-                    .: {}
-                    f:name: {}
-                    f:value: {}
-                f:image: {}
-                f:imagePullPolicy: {}
-                f:name: {}
-                f:resources: {}
-                f:securityContext:
-                  .: {}
-                  f:runAsUser: {}
-                f:terminationMessagePath: {}
-                f:terminationMessagePolicy: {}
-            f:dnsPolicy: {}
-            f:restartPolicy: {}
-            f:schedulerName: {}
-            f:securityContext:
-              .: {}
-              f:fsGroup: {}
-            f:serviceAccount: {}
-            f:serviceAccountName: {}
-            f:terminationGracePeriodSeconds: {}
-    manager: Go-http-client
-    operation: Update
-    time: "2020-11-16T12:30:29Z"
-  - apiVersion: batch/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:status:
-        f:completionTime: {}
-        f:conditions:
-          .: {}
-          k:{"type":"Complete"}:
-            .: {}
-            f:lastProbeTime: {}
-            f:lastTransitionTime: {}
-            f:status: {}
-            f:type: {}
-        f:startTime: {}
-        f:succeeded: {}
-    manager: k3s
-    operation: Update
-    time: "2020-11-16T12:31:00Z"
-  name: my-release-redis-cluster-cluster-create
-  namespace: default
-  resourceVersion: "171537"
-  selfLink: /apis/batch/v1/namespaces/default/jobs/my-release-redis-cluster-cluster-create
-  uid: ec76197d-19e4-48ee-a720-fb4eaa4c8abd
+  name: redis-cluster-cluster-create
+  namespace: redis
 spec:
   activeDeadlineSeconds: 600
   backoffLimit: 6
@@ -120,12 +17,8 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app.kubernetes.io/instance: my-release
-        app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis-cluster
-        controller-uid: ec76197d-19e4-48ee-a720-fb4eaa4c8abd
-        helm.sh/chart: redis-cluster-3.3.1
-        job-name: my-release-redis-cluster-cluster-create
+        job-name: redis-cluster-cluster-create
     spec:
       containers:
       - args:
@@ -144,9 +37,9 @@ spec:
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_NODES
-          value: 'my-release-redis-cluster-0.my-release-redis-cluster-headless my-release-redis-cluster-1.my-release-redis-cluster-headless
-            my-release-redis-cluster-2.my-release-redis-cluster-headless my-release-redis-cluster-3.my-release-redis-cluster-headless
-            my-release-redis-cluster-4.my-release-redis-cluster-headless my-release-redis-cluster-5.my-release-redis-cluster-headless '
+          value: 'redis-cluster-0.redis-cluster-headless redis-cluster-1.redis-cluster-headless
+            redis-cluster-2.redis-cluster-headless redis-cluster-3.redis-cluster-headless
+            redis-cluster-4.redis-cluster-headless redis-cluster-5.redis-cluster-headless '
         - name: REDIS_CLUSTER_CREATOR
           value: "yes"
         - name: REDIS_CLUSTER_REPLICAS
@@ -167,12 +60,3 @@ spec:
       serviceAccount: default
       serviceAccountName: default
       terminationGracePeriodSeconds: 30
-status:
-  completionTime: "2020-11-16T12:31:00Z"
-  conditions:
-  - lastProbeTime: "2020-11-16T12:31:00Z"
-    lastTransitionTime: "2020-11-16T12:31:00Z"
-    status: "True"
-    type: Complete
-  startTime: "2020-11-16T12:30:29Z"
-  succeeded: 1
