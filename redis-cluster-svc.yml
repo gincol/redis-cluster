@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2020-11-16T12:30:29Z"
+  labels:
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: redis-cluster
+    helm.sh/chart: redis-cluster-3.3.1
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":6379,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-11-16T12:30:29Z"
+  name: my-release-redis-cluster
+  namespace: default
+  resourceVersion: "171228"
+  selfLink: /api/v1/namespaces/default/services/my-release-redis-cluster
+  uid: 0e4cd399-ff8c-47f5-94a7-fde452a0cb78
+spec:
+  clusterIP: 10.43.140.80
+  ports:
+  - name: tcp-redis
+    port: 6379
+    protocol: TCP
+    targetPort: tcp-redis
+  selector:
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/name: redis-cluster
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
