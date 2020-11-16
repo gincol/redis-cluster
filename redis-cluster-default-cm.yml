@@ -1815,38 +1815,7 @@ data:
     # bgsave_cpulist 1,10-11
 kind: ConfigMap
 metadata:
-  annotations:
-    meta.helm.sh/release-name: my-release
-    meta.helm.sh/release-namespace: default
-  creationTimestamp: "2020-11-16T12:30:29Z"
   labels:
-    app.kubernetes.io/instance: my-release
-    app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis-cluster
-    helm.sh/chart: redis-cluster-3.3.1
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:redis-default.conf: {}
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:meta.helm.sh/release-name: {}
-          f:meta.helm.sh/release-namespace: {}
-        f:labels:
-          .: {}
-          f:app.kubernetes.io/instance: {}
-          f:app.kubernetes.io/managed-by: {}
-          f:app.kubernetes.io/name: {}
-          f:helm.sh/chart: {}
-    manager: Go-http-client
-    operation: Update
-    time: "2020-11-16T12:30:29Z"
-  name: my-release-redis-cluster-default
-  namespace: default
-  resourceVersion: "171221"
-  selfLink: /api/v1/namespaces/default/configmaps/my-release-redis-cluster-default
-  uid: 78827811-02df-4129-b275-fdf2699f452b
+  name: redis-cluster-default
+  namespace: redis
