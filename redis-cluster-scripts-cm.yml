@@ -29,6 +29,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/name: redis-cluster
+    app: redis-cluster
   name: redis-cluster-scripts
   namespace: redis

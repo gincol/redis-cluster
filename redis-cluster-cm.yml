@@ -1816,6 +1816,6 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/name: redis-cluster
-  name: redis-cluster-default
+    app: redis-cluster
+  name: redis-cluster-cm
   namespace: redis

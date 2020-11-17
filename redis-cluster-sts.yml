@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app.kubernetes.io/name: redis-cluster
+    app: redis-cluster
   name: redis-cluster
   namespace: redis
 spec:
@@ -11,12 +11,12 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/name: redis-cluster
+      app: redis-cluster
   serviceName: redis-cluster-headless
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: redis-cluster
+        app: redis-cluster
     spec:
       affinity: {}
       containers:
@@ -78,7 +78,7 @@ spec:
           timeoutSeconds: 1
         resources: {}
         securityContext:
-          runAsUser: 1001
+          runAsUser: 1000650000
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
@@ -96,7 +96,7 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext:
-        fsGroup: 1001
+        fsGroup: 1000650000
       serviceAccount: default
       serviceAccountName: default
       terminationGracePeriodSeconds: 30
@@ -107,7 +107,7 @@ spec:
         name: scripts
       - configMap:
           defaultMode: 420
-          name: redis-cluster-default
+          name: redis-cluster-cm
         name: default-config
       - emptyDir: {}
         name: redis-tmp-conf

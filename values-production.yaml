@@ -431,8 +431,8 @@ rbac:
 ##
 podSecurityContext:
   enabled: true
-  fsGroup: 1001
-  runAsUser: 1001
+  fsGroup: 1000650000
+  runAsUser: 1000650000
   ## sysctl settings
   ##
   ## Uncomment the setting below to increase the net.core.somaxconn value
@@ -456,7 +456,7 @@ podDisruptionBudget: {}
 ##
 containerSecurityContext:
   enabled: true
-  runAsUser: 1001
+  runAsUser: 1000650000
   ## sysctl settings
   ##
   ## Uncomment the setting below to increase the net.core.somaxconn value
