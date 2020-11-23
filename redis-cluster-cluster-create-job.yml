@@ -10,9 +10,9 @@ spec:
   backoffLimit: 6
   completions: 1
   parallelism: 1
-  selector:
-    matchLabels:
-      app: redis-cluster
+#  selector:
+#    matchLabels:
+#      app: redis-cluster
   template:
     metadata:
       labels:
@@ -36,9 +36,9 @@ spec:
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_NODES
-          value: 'redis-cluster-0.redis-cluster-headless redis-cluster-1.redis-cluster-headless
-            redis-cluster-2.redis-cluster-headless redis-cluster-3.redis-cluster-headless
-            redis-cluster-4.redis-cluster-headless redis-cluster-5.redis-cluster-headless '
+          value: 'redis-cluster-0.redis-cluster-headless.redis.svc.cluster.local redis-cluster-1.redis-cluster-headless.redis.svc.cluster.local
+            redis-cluster-2.redis-cluster-headless.redis.svc.cluster.local redis-cluster-3.redis-cluster-headless.redis.svc.cluster.local
+            redis-cluster-4.redis-cluster-headless.redis.svc.cluster.local redis-cluster-5.redis-cluster-headless.redis.svc.cluster.local '
         - name: REDIS_CLUSTER_CREATOR
           value: "yes"
         - name: REDIS_CLUSTER_REPLICAS

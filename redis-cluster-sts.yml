@@ -33,9 +33,9 @@ spec:
         - -c
         env:
         - name: REDIS_NODES
-          value: 'redis-cluster-0.redis-cluster-headless redis-cluster-1.redis-cluster-headless
-            redis-cluster-2.redis-cluster-headless redis-cluster-3.redis-cluster-headless
-            redis-cluster-4.redis-cluster-headless redis-cluster-5.redis-cluster-headless '
+          value: 'redis-cluster-0.redis-cluster-headless.redis.svc.cluster.local redis-cluster-1.redis-cluster-headless.redis.svc.cluster.local
+            redis-cluster-2.redis-cluster-headless.redis.svc.cluster.local redis-cluster-3.redis-cluster-headless.redis.svc.cluster.local
+            redis-cluster-4.redis-cluster-headless.redis.svc.cluster.local redis-cluster-5.redis-cluster-headless.redis.svc.cluster.local '
         - name: ALLOW_EMPTY_PASSWORD
           value: "yes"
         - name: REDIS_AOF_ENABLED
@@ -116,9 +116,10 @@ spec:
   volumeClaimTemplates:
   - apiVersion: v1
     kind: PersistentVolumeClaim
+    metadata:
+      name: redis-data
     spec:
-      accessModes:
-      - ReadWriteOnce
+      accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
           storage: 100Mi
